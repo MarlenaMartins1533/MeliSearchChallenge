@@ -15,8 +15,10 @@ import com.searchchallenge.ui.composable.SearchScreen
 import com.searchchallenge.ui.composable.parameterprovider.productListNamesParameterProvider
 import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 import com.searchchallenge.ui.theme.SearchChallengeTheme
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : ComponentActivity() {
+    private val mainViewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,7 @@ class MainActivity : ComponentActivity() {
         SearchScreen(
             onSearch = { query ->
                 searchResults.value = "Search result for: $query"
+                mainViewModel.searchProducts(query)
             }
         ) {
             Column {
