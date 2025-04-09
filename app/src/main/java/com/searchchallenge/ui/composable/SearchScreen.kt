@@ -43,7 +43,7 @@ fun SearchScreen(
                             onSearch(query)
                             active = false
                         },
-                        expanded = active,
+                        expanded = false, //active,
                         onExpandedChange = { active = it },
                         placeholder = { Text("Search...") },
                         leadingIcon = {
@@ -54,7 +54,7 @@ fun SearchScreen(
                         },
                     )
                 },
-                expanded = active,
+                expanded = false, //active,
                 onExpandedChange = { active = it },
                 modifier = Modifier
                     .fillMaxWidth()
@@ -71,8 +71,11 @@ fun SearchScreen(
         containerColor = Color.LightGray,
         contentColor = Color.LightGray,
         content = { paddingValues ->
+            // Passa a lista de produtos após consulta API
             Column(Modifier.padding(paddingValues)) {
-                content()
+                content() // Envolve o ProductListScreen em uma Column
+//                Text("Search Results:")
+//                ProductListScreen(productItems = productListParameterProvider)
             }
         },
     )
@@ -84,7 +87,7 @@ private fun SearchScreenPreview() {
     SearchScreen(
         onSearch = { "Search result for: ${productListNamesParameterProvider.first()}" },
         content = {
-            Column {
+            Column() {
                 Text("Search Results:")
             }
         }
