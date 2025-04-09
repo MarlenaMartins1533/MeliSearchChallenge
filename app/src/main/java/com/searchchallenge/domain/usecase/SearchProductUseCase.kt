@@ -1,11 +1,12 @@
 package com.searchchallenge.domain.usecase
 
+import com.searchchallenge.domain.repository.SearchProductRepository
 import com.searchchallenge.ui.composable.model.Product
-import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 
 class SearchProductUseCase (
+    private val searchProductRepository: SearchProductRepository
 ) {
     suspend operator fun invoke(query: String): List<Product> {
-        return productListParameterProvider
+        return searchProductRepository.searchProducts(query)
     }
 }
