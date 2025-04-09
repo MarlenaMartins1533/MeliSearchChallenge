@@ -51,6 +51,8 @@ dependencies {
     implementation(libs.androidx.material)
     implementation(libs.androidx.material3)
     implementation(libs.koin.core)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
