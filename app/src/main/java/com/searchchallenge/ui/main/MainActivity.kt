@@ -26,6 +26,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             SearchChallengeTheme {
                 SearchProducts()
+//            }
             }
         }
     }
@@ -38,13 +39,25 @@ class MainActivity : ComponentActivity() {
         SearchScreen(
             onSearch = { query ->
                 searchResults.value = "Search result for: $query"
+                // Your search logic here.  For now, let's just update the searchResults:
+                //chama fun da VM e traz os resultados da busca do Meli
                 mainViewModel.searchProducts(query)
             }
         ) {
-            Column {
-                Text("Search Results:")
-                ProductListScreen(productItems = productListParameterProvider)
+            Column(
+            ) {
+                Text(searchResults.value)
+                ProductListScreen(productItems = mainViewModel.searchProductData.value)
             }
         }
     }
 }
+
+//@Preview(showBackground = true)
+//@Composable
+//fun SearchScreenPreview() {
+//    SearchChallengeTheme {
+//        SearchProducts()
+//    }
+//}
+
