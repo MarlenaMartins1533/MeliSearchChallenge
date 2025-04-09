@@ -1,6 +1,7 @@
 package com.searchchallenge.ui.composable
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -22,15 +23,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.searchchallenge.ui.composable.parameterprovider.productListNamesParameterProvider
+import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchScreen(
     onSearch: (String) -> Unit,
-    content: @Composable () -> Unit,
+    content: @Composable (PaddingValues) -> Unit,
 ) {
-    var query by remember { mutableStateOf(productListNamesParameterProvider.first()) }
-    var active by remember { mutableStateOf(false) }
+    var query by remember { mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -38,13 +39,16 @@ fun SearchScreen(
                 inputField = {
                     SearchBarDefaults.InputField(
                         query = query,
-                        onQueryChange = { query = it },
+                        onQueryChange = {
+                            query = it
+//                            onSearch(query)
+                                        },
                         onSearch = {
                             onSearch(query)
-                            active = false
+//                            active = false
                         },
-                        expanded = false, //active,
-                        onExpandedChange = { active = it },
+                        expanded = true, //active,
+                        onExpandedChange = { /*active = it*/ },
                         placeholder = { Text("Search...") },
                         leadingIcon = {
                             Icon(
@@ -55,28 +59,22 @@ fun SearchScreen(
                     )
                 },
                 expanded = false, //active,
-                onExpandedChange = { active = it },
+                onExpandedChange = { },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                shape = SearchBarDefaults.fullScreenShape,
-            ) {
-                Text(
-                    "Suggestions will appear here...",
-                    modifier = Modifier.padding(16.dp)
-                )
-            }
+            ) {}
         },
         modifier = Modifier.fillMaxSize(),
         containerColor = Color.LightGray,
         contentColor = Color.LightGray,
         content = { paddingValues ->
             // Passa a lista de produtos após consulta API
-            Column(Modifier.padding(paddingValues)) {
-                content() // Envolve o ProductListScreen em uma Column
+//            Column(Modifier.fillMaxWidth().padding(paddingValues)) {
+                content(paddingValues) // Envolve o ProductListScreen em uma Column
 //                Text("Search Results:")
 //                ProductListScreen(productItems = productListParameterProvider)
-            }
+//            }
         },
     )
 }
