@@ -16,7 +16,7 @@ class SearchProductRepositoryTest {
         SearchProductRepository(apiService)
 
     @Test
-    fun `get product from api returns success`() = runBlocking {
+    fun `search product from api returns success`() = runBlocking {
         //given
         coEvery {
             apiService.searchProducts(Resources.Query)
@@ -34,8 +34,7 @@ class SearchProductRepositoryTest {
     }
 
     @Test
-    fun `get product from api returns error`() = runBlocking {
+    fun `search product from api returns error`() = runBlocking {
         // TO..DO
     }
-
 }

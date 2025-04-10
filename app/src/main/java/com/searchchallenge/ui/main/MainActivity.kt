@@ -23,6 +23,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,12 +31,15 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
+import com.searchchallenge.R
 import com.searchchallenge.ui.composable.ProductListScreen
 import com.searchchallenge.ui.composable.SearchScreen
 import com.searchchallenge.ui.composable.model.Product
@@ -92,7 +96,7 @@ class MainActivity : ComponentActivity() {
             if (showBottomSheet) {
                 ModalBottomSheet(
                     onDismissRequest = { showBottomSheet = false },
-                    Modifier.padding(2.dp),
+                    Modifier.padding(16.dp),
                     sheetState = bottomSheetState
                 ) {
                     productToShow?.let { product ->
@@ -100,26 +104,31 @@ class MainActivity : ComponentActivity() {
                         Log.e("productImage", productImage)
                         Log.e("productDescription", product.description)
 
-                        Text(product.name)
-                        Row {
+                        Text(
+                            text = product.name,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier.align(CenterHorizontally)
+                        )
+                        Row(modifier = Modifier.align(CenterHorizontally)) {
+                            Text(
+                                text = "Descrição do produto... ${product.description}",
+                                textAlign = TextAlign.Justify,
+                                fontSize = 14.sp,
+                                color = Color.Black,
+                                modifier = Modifier.align(CenterVertically)
+                            )
                             AsyncImage(
                                 model = ImageRequest.Builder(LocalContext.current)
                                     .data(productImage)
                                     .build(),
-                                contentDescription = "Restaurant Image",
+                                contentDescription = "Image",
                                 modifier =
                                     Modifier
                                         .size(120.dp)
                                         .shadow(4.dp, RoundedCornerShape(4.dp))
                                         .clip(RoundedCornerShape(4.dp)),
                                 contentScale = ContentScale.Crop,
-                            )
-                            Text(
-                                text = product.description,
-                                textAlign = TextAlign.Justify,
-                                fontSize = 14.sp,
-                                color = Color.Black,
-                                modifier = Modifier.align(CenterVertically)
+                                error = painterResource(id = R.drawable.baseline_add_shopping_cart_24),
                             )
                         }
                     }

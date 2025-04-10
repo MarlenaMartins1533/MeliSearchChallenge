@@ -1,5 +1,6 @@
 package com.searchchallenge.ui.composable
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
+import com.searchchallenge.R
 import com.searchchallenge.ui.composable.model.Product
 import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 
@@ -67,6 +69,7 @@ fun ProductCard(
                         .shadow(4.dp, RoundedCornerShape(4.dp))
                         .clip(RoundedCornerShape(4.dp)),
                 contentScale = ContentScale.Crop,
+                error = painterResource(id = R.drawable.baseline_add_shopping_cart_24),
             )
             Column(
                 modifier = Modifier

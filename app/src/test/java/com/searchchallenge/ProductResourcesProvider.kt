@@ -8,7 +8,6 @@ import com.searchchallenge.ui.composable.model.Product
 
 object Resources {
     const val Query = "s20"
-    var productListNamesParameterProvider = mutableListOf("Sample Name", "Other Sample Name")
 
     var productDomainListParameterProvider = mutableListOf(
         ProductDomain(

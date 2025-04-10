@@ -24,13 +24,13 @@ class SearchProductDataSource(
                 searchProducts = response.body()
                 return searchProducts?.results?.map { mapper(it) }
             } else {
-                // Erro (ex: log, retorne null, lance uma exceção)
+                Log.e("Error ", " ")
                 return null
             }
 
         } catch (e: Exception) {
-            // Lide com erros de rede ou outras exceções
-            Log.e("Test: ", " Exception ", e)
+            // TO DO Lidar com erros de rede ou outras exceções e criar os estados de error
+            Log.e("Error: ", " Exception ", e)
             return null
         }
     }
