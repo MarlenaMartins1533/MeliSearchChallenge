@@ -1,7 +1,8 @@
 package com.searchchallenge.ui.composable.model
 
 data class Product(
-    val icon: Int,
+    val id: String,
     val name: String,
+    val images: List<String>,
     val description: String,
 )

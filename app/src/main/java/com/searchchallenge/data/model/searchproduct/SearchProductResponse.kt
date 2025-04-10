@@ -3,12 +3,14 @@ package com.searchchallenge.data.model.searchproduct
 import com.google.gson.annotations.SerializedName
 
 data class SearchProductResponse(
-    @SerializedName("site_id")
-    val siteId: String,
-    @SerializedName("query")
-    val query: String,
+    @SerializedName("keywords")
+    val keywords: String,
     @SerializedName("paging")
     val paging: PaginationResponse,
     @SerializedName("results")
-    val results: ArrayList<SearchResultsResponse>
+    val results: ArrayList<ResultsResponse>,
+    @SerializedName("used_attributes")
+    val usedAttributes: ArrayList<UsedAttributesResponse>,
+    @SerializedName("query_type")
+    val queryType: String,
 )

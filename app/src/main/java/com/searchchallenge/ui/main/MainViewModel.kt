@@ -6,12 +6,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.searchchallenge.domain.usecase.SearchProductUseCase
+import com.searchchallenge.ui.composable.mapper.DomainToProductMapper
 import com.searchchallenge.ui.composable.model.Product
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class MainViewModel(
-    private val searchProductUseCase: SearchProductUseCase
+    private val searchProductUseCase: SearchProductUseCase,
+    private val domainToProductMapper: DomainToProductMapper
 ) : ViewModel() {
 
     private val _searchProductData = mutableStateOf<List<Product>>(emptyList())
@@ -20,7 +22,7 @@ class MainViewModel(
     fun searchProducts(query: String) {
         viewModelScope.launch {
             try {
-                _searchProductData.value = searchProductUseCase.invoke(query)
+                _searchProductData.value = domainToProductMapper.invoke(searchProductUseCase(query))
             } catch (e: HttpException) {
                 Log.e("error", e.message ?: "ERROR")
             }

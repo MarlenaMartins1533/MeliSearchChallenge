@@ -1,19 +1,20 @@
 package com.searchchallenge.ui.composable.parameterprovider
 
-import com.searchchallenge.R
 import com.searchchallenge.ui.composable.model.Product
 
 // Mock data
 var productListParameterProvider = listOf(
     Product(
-        R.drawable.baseline_add_shopping_cart_24,
+        id = "Sample Id",
         name = "Sample Name",
+        images = listOf("R.drawable.baseline_add_shopping_cart_24"),
         description = "Sample description! " +
                 "Produto mirabilis ad [activitatem] cum [pluma desiderata] et [beneficium clavem].",
     ),
     Product(
-        R.drawable.baseline_add_shopping_cart_24,
+        id = "Sample Id",
         name = "Sample Second Name",
+        images = listOf("R.drawable.baseline_add_shopping_cart_24"),
         description = "Sample second description! " +
                 "Produto Second mirabilis ad [activitatem] cum [pluma desiderata] et [beneficium clavem].",
     )

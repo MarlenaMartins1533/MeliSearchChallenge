@@ -45,6 +45,7 @@ fun ProductCard(product: Product) {
                 .background(Color.Blue)
         ) {
             Image(
+                // TODO se tiver tempo trabalhar a imagem.
                 painter = painterResource(id = R.drawable.baseline_add_shopping_cart_24),
                 contentDescription = "Product image",
                 modifier = Modifier
@@ -65,7 +66,7 @@ fun ProductCard(product: Product) {
                     fontSize = 16.sp,
                 )
                 Text(
-                    text = product.description ?: "",
+                    text = product.description,
                     textAlign = TextAlign.Justify,
                     fontSize = 14.sp,
                     color = Color.White,
