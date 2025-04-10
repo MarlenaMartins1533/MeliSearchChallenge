@@ -1,11 +1,10 @@
 package com.searchchallenge.data.remote.datasource
 
+import android.util.Log
 import com.searchchallenge.data.model.searchproduct.SearchProductResponse
-import com.searchchallenge.data.remote.datasource.parameterprovider.productResponseListParameterProvider
 import com.searchchallenge.data.remote.mapper.ResponseToDomainMapper
 import com.searchchallenge.data.remote.service.MeLiApiService
 import com.searchchallenge.domain.model.ProductDomain
-import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 import retrofit2.Call
 
 class SearchProductDataSource(
@@ -31,6 +30,7 @@ class SearchProductDataSource(
 
         } catch (e: Exception) {
             // Lide com erros de rede ou outras exceções
+            Log.e("Test: ", " Exception ", e)
             return null
         }
     }

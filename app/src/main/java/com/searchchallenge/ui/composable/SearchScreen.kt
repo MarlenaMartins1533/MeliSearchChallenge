@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -40,13 +41,11 @@ fun SearchScreen(
                         query = query,
                         onQueryChange = {
                             query = it
-//                            onSearch(query)
-                                        },
+                        },
                         onSearch = {
                             onSearch(query)
-//                            active = false
                         },
-                        expanded = true, //active,
+                        expanded = true,
                         onExpandedChange = { /*active = it*/ },
                         placeholder = { Text("Search...") },
                         leadingIcon = {
@@ -62,6 +61,7 @@ fun SearchScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
+                shape = RoundedCornerShape(20.dp),
             ) {}
         },
         modifier = Modifier.fillMaxSize(),
@@ -70,7 +70,7 @@ fun SearchScreen(
         content = { paddingValues ->
             // Passa a lista de produtos após consulta API
 //            Column(Modifier.fillMaxWidth().padding(paddingValues)) {
-                content(paddingValues) // Envolve o ProductListScreen em uma Column
+            content(paddingValues) // Envolve o ProductListScreen em uma Column
 //                Text("Search Results:")
 //                ProductListScreen(productItems = productListParameterProvider)
 //            }

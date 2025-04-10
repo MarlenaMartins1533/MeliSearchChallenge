@@ -20,7 +20,8 @@ fun ProductListScreen(productItems: List<Product>) {
                     .padding(paddingValues)
             ) {
                 items(productItems.size) { index ->
-                    ProductCard(product = productItems[index])
+                    val item = productItems[index]
+                    ProductCard(product = item)
                 }
             }
         }

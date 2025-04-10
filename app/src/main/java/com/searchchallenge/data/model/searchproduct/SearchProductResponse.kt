@@ -8,9 +8,9 @@ data class SearchProductResponse(
     @SerializedName("paging")
     val paging: PaginationResponse,
     @SerializedName("results")
-    val results: ArrayList<ResultsResponse>,
+    val results: List<ResultsResponse>,
     @SerializedName("used_attributes")
-    val usedAttributes: ArrayList<UsedAttributesResponse>,
+    val usedAttributes: List<UsedAttributesResponse>,
     @SerializedName("query_type")
     val queryType: String,
 )
