@@ -1,6 +1,6 @@
 package com.searchchallenge.data.repository
 
-import com.searchchallenge.data.dataresources.Resources
+import com.searchchallenge.Resources
 import com.searchchallenge.data.remote.datasource.ISearchProductDataSource
 import com.searchchallenge.domain.repository.ISearchProductRepository
 import io.mockk.coEvery
@@ -20,16 +20,16 @@ class SearchProductRepositoryTest {
         //given
         coEvery {
             apiService.searchProducts(Resources.Query)
-        } returns Resources.productResponseListParameterProvider
+        } returns Resources.productDomainListParameterProvider
 
         //when
         val productResponse = searchProductRepository.searchProducts(Resources.Query)
 
         //then
-        assertEquals(productResponse.size, Resources.productResponseListParameterProvider.size)
+        assertEquals(productResponse.size, Resources.productDomainListParameterProvider.size)
         assertEquals(
             productResponse.first().productName,
-            Resources.productResponseListParameterProvider.first().productName
+            Resources.productDomainListParameterProvider.first().productName
         )
     }
 
