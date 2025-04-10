@@ -11,7 +11,10 @@ import com.searchchallenge.ui.composable.model.Product
 import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 
 @Composable
-fun ProductListScreen(productItems: List<Product>) {
+fun ProductListScreen(
+    productItems: List<Product>,
+    openBottomSheet: (Product) -> Unit,
+) {
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         content = { paddingValues ->
@@ -21,7 +24,7 @@ fun ProductListScreen(productItems: List<Product>) {
             ) {
                 items(productItems.size) { index ->
                     val item = productItems[index]
-                    ProductCard(product = item, onExpandedClick)
+                    ProductCard(product = item, openBottomSheet = openBottomSheet)
                 }
             }
         }
@@ -31,5 +34,8 @@ fun ProductListScreen(productItems: List<Product>) {
 @Composable
 @Preview(showBackground = true)
 private fun ProductListScreenPreview() {
-    ProductListScreen(productItems = productListParameterProvider)
+    ProductListScreen(
+        productItems = productListParameterProvider,
+        openBottomSheet = { }
+    )
 }

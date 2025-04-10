@@ -68,12 +68,7 @@ fun SearchScreen(
         containerColor = Color.LightGray,
         contentColor = Color.LightGray,
         content = { paddingValues ->
-            // Passa a lista de produtos após consulta API
-//            Column(Modifier.fillMaxWidth().padding(paddingValues)) {
-            content(paddingValues) // Envolve o ProductListScreen em uma Column
-//                Text("Search Results:")
-//                ProductListScreen(productItems = productListParameterProvider)
-//            }
+            content(paddingValues)
         },
     )
 }
