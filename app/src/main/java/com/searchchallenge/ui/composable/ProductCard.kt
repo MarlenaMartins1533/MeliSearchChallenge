@@ -31,7 +31,10 @@ import com.searchchallenge.ui.composable.model.Product
 import com.searchchallenge.ui.composable.parameterprovider.productListParameterProvider
 
 @Composable
-fun ProductCard(product: Product) {
+fun ProductCard(
+    product: Product,
+    onExpandedClick: @Composable ()-> Unit
+) {
     rememberScrollState()
     Card(
         shape = RoundedCornerShape(20.dp),
@@ -47,6 +50,16 @@ fun ProductCard(product: Product) {
                 .padding(4.dp)
                 .background(Color.Gray)
         ) {
+//            AsyncImage(
+//                model = product.images.first(),
+//                contentDescription = product.name,
+//                modifier = Modifier
+//                    .padding(2.dp)
+//                    .clip(shape = RoundedCornerShape(10.dp)),
+//                placeholder = painterResource(id = android.R.drawable.ic_menu_gallery),
+//                error = painterResource(id = R.drawable.baseline_add_shopping_cart_24),
+//                contentScale = ContentScale.Crop,
+//            )
             Image(
                 painter = painterResource(id = R.drawable.baseline_add_shopping_cart_24),
                 contentDescription = "Product image",
@@ -75,7 +88,7 @@ fun ProductCard(product: Product) {
                 )
             }
             IconButton(
-                onClick = { /* Future Improvinment Handle expand click to see more infos: ProductDetails */ },
+                onClick = { onExpandedClick() },
                 modifier = Modifier.align(Alignment.CenterVertically)
             ) {
                 Icon(

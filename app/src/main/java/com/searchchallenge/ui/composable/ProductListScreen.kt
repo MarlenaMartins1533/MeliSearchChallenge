@@ -21,7 +21,7 @@ fun ProductListScreen(productItems: List<Product>) {
             ) {
                 items(productItems.size) { index ->
                     val item = productItems[index]
-                    ProductCard(product = item)
+                    ProductCard(product = item, onExpandedClick)
                 }
             }
         }
