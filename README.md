@@ -9,7 +9,7 @@
 > * Uso Coil para carregamento de Imagens Assincronas.
 > * Koin para Injeção de dependencia
 > * Uso mocking com Mockk e Mockito para injeção de dependência nos testes,
-> *  Testes Unitários.
+> *  Testes Unitários (Apenas alguns para exemplificar, como trabalho futuro aumentar a cobertura!).
 > *  Corroutine para Multithred
 > *  Jetpack Compose para composição das views
 > *  Tratamento de alguns erros
