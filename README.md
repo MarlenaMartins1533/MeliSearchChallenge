@@ -1,4 +1,4 @@
-# Aplicativo Mobile Android desenvolvido para o desafio do Mercado Livre.
+# Aplicativo Mobile Android desenvolvido para o desafio do MeLi.
 
  ### Caracteristicas do Projeto:
  
